@@ -1,0 +1,270 @@
+{
+  "header": "
+#include <netlink/socket.h>
+#include \"macros.h\"
+#include \"conversion.h\"
+  ",
+  "parameterprefix": "NL",
+  "functionentry": "SOCKETS_TRY_STATEMENT", 
+  "functionexit": "SOCKETS_CATCH_STATEMENT", 
+  "functionexitreturn": "SOCKETS_CATCH_STATEMENT_RETURN",
+  "typemapping": {
+    "Boolean": {
+      "ctype": "bool",
+      "from": "conv_from_baseType<KL::Boolean, bool>",
+      "to": "conv_to_baseType<KL::Boolean, bool>",
+      "defaultvalue": "false"
+    },
+    "SInt32": {
+      "ctype": "int",
+      "from": "conv_from_baseType<KL::SInt32, int>",
+      "to": "conv_to_baseType<KL::SInt32, int>",
+      "defaultvalue": "0"
+    },
+    "UInt16": {
+      "ctype": "uint16_t",
+      "from": "conv_from_baseType<KL::UInt16, uint16_t>",
+      "to": "conv_to_baseType<KL::UInt16, uint16_t>",
+      "defaultvalue": "0"
+    },
+    "UInt32": {
+      "ctype": "uint32_t",
+      "from": "conv_from_baseType<KL::UInt32, uint32_t>",
+      "to": "conv_to_baseType<KL::UInt32, uint32_t>",
+      "defaultvalue": "0"
+    },
+    "Float32": {
+      "ctype": "float",
+      "from": "conv_from_baseType<KL::Float32, float>",
+      "to": "conv_to_baseType<KL::Float32, float>",
+      "defaultvalue": "0"
+    },
+    "Float64": {
+      "ctype": "double",
+      "from": "conv_from_baseType<KL::Float64, double>",
+      "to": "conv_to_baseType<KL::Float64, double>",
+      "defaultvalue": "0"
+    },
+    "String": {
+      "ctype": "std::string",
+      "from": "conv_from_String",
+      "to": "conv_to_String",
+      "defaultvalue": "\"\""
+    },
+    "IPVer": {
+      "ctype": "NL::IPVer *",
+      "from": "conv_from_KLObject<KL::IPVer, NL::IPVer>",
+      "to": "conv_to_KLObject<KL::IPVer, NL::IPVer>",
+      "methodop": "->",
+      "dereferenceasmethodparam": true
+    },
+    "Protocol": {
+      "ctype": "NL::Protocol *",
+      "from": "conv_from_KLObject<KL::Protocol, NL::Protocol>",
+      "to": "conv_to_KLObject<KL::Protocol, NL::Protocol>",
+      "methodop": "->",
+      "dereferenceasmethodparam": true
+    }, 
+    "SocketType": {
+      "ctype": "NL::SocketType *",
+      "from": "conv_from_KLObject<KL::SocketType, NL::SocketType>",
+      "to": "conv_to_KLObject<KL::SocketType, NL::SocketType>",
+      "methodop": "->",
+      "dereferenceasmethodparam": true
+    },            
+    "Socket": {
+      "ctype": "NL::Socket *",
+      "from": "conv_from_KLObject<KL::Socket, NL::Socket>",
+      "to": "conv_to_KLObject<KL::Socket, NL::Socket>",
+      "methodop": "->",
+      "dereferenceasmethodparam": true
+    }
+  },
+  "functionbodies": {
+    "IPVer_Construct": "
+  this_->handle = new Handle<NL::IPVer>(new NL::IPVer());
+    ", 
+    "IPVer_ConstructFromString": "
+  this_->handle = new Handle<NL::IPVer>(new NL::IPVer(IPVer::StringToEnum(NLName.data())));
+    ",    
+    "IPVer_Destruct": "
+  delete NLThis_;
+    ", 
+    "IPVer_AsCode": "
+  return KL::UInt32(* NLThis_);  
+    ",
+    "IPVer_AsString": "
+  const char * NLResult = IPVer::EnumToString(* NLThis_);
+  conv_to_String(NLResult, _result);
+    ",
+    "IPVer_AsCode": "
+  return KL::UInt32(* NLThis_);  
+    ",
+    "IPVer_Equal": "
+  return *NLA == *NLB;
+    ", 
+    "IPVer_NotEqual": "
+  return *NLA != *NLB;
+    ",
+    "Protocol_Construct": "
+  this_->handle = new Handle<NL::Protocol>(new NL::Protocol());
+    ", 
+    "Protocol_ConstructFromString": "
+  this_->handle = new Handle<NL::Protocol>(new NL::Protocol(Protocol::StringToEnum(NLName.data())));
+    ",    
+    "Protocol_Destruct": "
+  delete NLThis_;
+    ", 
+    "Protocol_AsCode": "
+  return KL::UInt32(* NLThis_);  
+    ",
+    "Protocol_AsString": "
+  const char * NLResult = Protocol::EnumToString(* NLThis_);
+  conv_to_String(NLResult, _result);
+    ",
+    "Protocol_AsCode": "
+  return KL::UInt32(* NLThis_);  
+    ",
+    "Protocol_Equal": "
+  return *NLA == *NLB;
+    ", 
+    "Protocol_NotEqual": "
+  return *NLA != *NLB;
+    ", 
+    "SocketType_Construct": "
+  this_->handle = new Handle<NL::SocketType>(new NL::SocketType());
+    ", 
+    "SocketType_ConstructFromString": "
+  this_->handle = new Handle<NL::SocketType>(new NL::SocketType(SocketType::StringToEnum(NLName.data())));
+    ",    
+    "SocketType_Destruct": "
+  delete NLThis_;
+    ", 
+    "SocketType_AsCode": "
+  return KL::UInt32(* NLThis_);  
+    ",
+    "SocketType_AsString": "
+  const char * NLResult = SocketType::EnumToString(* NLThis_);
+  conv_to_String(NLResult, _result);
+    ",
+    "SocketType_AsCode": "
+  return KL::UInt32(* NLThis_);  
+    ",
+    "SocketType_Equal": "
+  return *NLA == *NLB;
+    ", 
+    "SocketType_NotEqual": "
+  return *NLA != *NLB;
+    ",              
+    "Socket_ConstructClient": "
+  this_->handle = new Handle<NL::Socket>(new NL::Socket(NLHostTo, NLPortTo, *NLProtocol, *NLIpVer));
+    ",
+    "Socket_ConstructServer": "
+  this_->handle = new Handle<NL::Socket>(new NL::Socket(NLPortFrom, *NLProtocol, *NLIpVer, NLHostFrom, NLListenQueue));
+    ",
+    "Socket_ConstructUDP": "
+  this_->handle = new Handle<NL::Socket>(new NL::Socket(NLHostTo, NLPortTo, NLPortFrom, *NLIpVer));
+    ", 
+    "Socket_Destruct": "
+  if(NLThis_ != NULL)
+  {
+    NLThis_->disconnect();
+    delete NLThis_;
+  }
+    ",
+    "Socket_accept": "
+  NL::Socket * NL_result = NLThis_->accept();
+  conv_to_KLObject<KL::Socket, NL::Socket>(NL_result, _result, true);
+    ",
+    "Socket_read": "
+  size_t s = NLThis_->nextReadSize();
+  char *buffer = NULL;
+  buffer = (char*)malloc(s+1);
+  if (buffer == NULL)
+    FABRIC_EXT_SETERROR_AND_RETURN(\"%s: %s\", QUOTEDNAME(functionName), \"read buffer memory alloc error\"); 
+  buffer[s] = '\\0';
+  NLThis_->read(buffer, s);
+  conv_to_String(buffer, _result);
+  if (buffer != NULL)
+    free(buffer);
+    ",
+    "Socket_send": "
+  NLThis_->send(NLMessage.data(), NLMessage.size()+1);
+    ",
+    "Socket_readFrom": "
+  size_t s = NLThis_->nextReadSize();
+  char *buffer = NULL;
+  buffer = (char*)malloc(s+1);
+  if (buffer == NULL)
+    FABRIC_EXT_SETERROR_AND_RETURN(\"%s: %s\", QUOTEDNAME(functionName), \"read buffer memory alloc error\"); 
+  buffer[s] = '\\0';
+  NLThis_->readFrom(buffer, s, &NLHostFrom, &NLPortFrom);
+  conv_to_String(buffer, _result);
+  if (buffer != NULL)
+    free(buffer);
+    ",
+    "Socket_sendTo": "
+  NLThis_->sendTo(NLMessage.data(), NLMessage.size()+1, NLHostTo, NLPortTo);
+    ",              
+    "SocketSetBlocking": "
+  NLThis_->blocking(NLFlag);
+    ",    
+    "Sockets_HostName": "
+  char NL_result[128] = \"\";
+  gethostname(NL_result, sizeof(NL_result));
+  conv_to_String(NL_result, _result);
+    ",
+    "Sockets_HostIP": "
+  struct addrinfo *result = NULL;
+  struct addrinfo *ptr = NULL;
+  struct addrinfo hints;
+
+  memset(&hints, 0, sizeof(hints));
+  hints.ai_family = AF_UNSPEC;
+  hints.ai_socktype = SOCK_STREAM;
+  hints.ai_protocol = IPPROTO_TCP;
+
+  int status = getaddrinfo(NLHostname.data(), NLServiceorport.data(), &hints, &result);
+
+  struct sockaddr_in  *sockaddr_ipv4;
+  struct sockaddr_in6 *sockaddr_ipv6;
+  LPSOCKADDR sockaddr_ip;
+
+  char ipstringbuffer[46];
+  DWORD ipbufferlength = 46;
+
+  std::string address = \"\";
+  for(ptr=result; ptr != NULL ;ptr=ptr->ai_next) {
+    switch (ptr->ai_family)
+    {
+      case AF_UNSPEC:
+          report(\"Unspecified\");
+          break;
+      case AF_INET:
+          report(\"AF_INET (IPv4)\");
+          sockaddr_ipv4 = (struct sockaddr_in *) ptr->ai_addr;
+          address = std::string(inet_ntoa(sockaddr_ipv4->sin_addr));
+          printf(\"  IPv4 address %s\", inet_ntoa(sockaddr_ipv4->sin_addr) );
+          break;
+      case AF_INET6:
+          report(\"AF_INET6 (IPv6)\");
+          sockaddr_ipv6 = (struct sockaddr_in6 *) ptr->ai_addr;
+          KL:report(\"  IPv6 address %s\", InetNtop(AF_INET6, &sockaddr_ipv6->sin6_addr, ipstringbuffer, 46) );
+          break;
+      case AF_NETBIOS:
+          report(\"AF_NETBIOS (NetBIOS)\");
+          break;
+      default:
+          report(\"Other %ld\", ptr->ai_family);
+          break;
+    }
+  }
+  freeaddrinfo(result);
+  conv_to_String(address, _result);
+    "
+  },
+  "methodmapping": {
+    "Socket_setBlocking": "blocking",
+    "Socket_getBlocking": "blocking"
+  }
+}

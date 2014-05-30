@@ -1,0 +1,20 @@
+/*
+ * Fabric Core 1.11.3
+ * HelloWorld EDK Sample
+ *
+ * Copyright 2010-2014 Fabric Software Inc. All rights reserved.
+ */
+
+object SocketType
+{
+    Data handle;
+};
+
+function SocketType() = "SocketType_Construct";
+function SocketType(String name) = "SocketType_ConstructFromString";
+function ~SocketType() = "SocketType_Destruct";
+
+function Integer SocketType.asCode() = "SocketType_AsCode";
+function String SocketType.asString() = "SocketType_AsString";
+function Boolean == (SocketType a, SocketType b) = "SocketType_Equal";
+function Boolean != (SocketType a, SocketType b) = "SocketType_NotEqual";

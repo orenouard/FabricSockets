@@ -1,0 +1,10 @@
+/*
+ * Fabric Core 1.11.3
+ * HelloWorld EDK Sample
+ *
+ * Copyright 2010-2014 Fabric Software Inc. All rights reserved.
+ */
+
+function String hostname() = "Sockets_HostName";
+function String hostip(String hostname, String serviceorport) = "Sockets_HostIP";
+inline String hostip(String hostname) {return hostip(hostname, "");}

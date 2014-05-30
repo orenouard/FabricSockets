@@ -1,0 +1,43 @@
+/*
+ *  Copyright 2010-2014 Fabric Software Inc. All rights reserved.
+ */
+
+object Socket {
+  Data handle;
+};
+
+// function Socket(const string& hostTo, unsigned portTo, Protocol protocol = TCP, IPVer ipVer = ANY) = "SocketConstructClient";
+// function Socket(unsigned portFrom, Protocol protocol = TCP, IPVer ipVer = IP4, const string& hostFrom = "", unsigned listenQueue = DEFAULT_LISTEN_QUEUE) = "SocketConstructServer";
+// function Socket(const string& hostTo, unsigned portTo, unsigned portFrom, IPVer ipVer = ANY) = "SocketConstructUDP";
+// Client
+function Socket(String hostTo, UInt32 portTo, Protocol protocol, IPVer ipVer) = "Socket_ConstructClient";
+// Server
+function Socket(String hostFrom, UInt32 portFrom, Protocol protocol, IPVer ipVer, UInt32 listenQueue) = "Socket_ConstructServer";
+inline Socket(UInt32 portFrom, Protocol protocol, IPVer ipVer, UInt32 listenQueue) {
+	Socket("", portFrom, protocol, ipVer, listenQueue);
+}
+// UDP
+function Socket(String hostTo, UInt32 portTo, UInt32 portFrom, IPVer ipVer) = "Socket_ConstructUDP";
+
+function ~Socket() = "Socket_Destruct";
+
+function Socket.blocking!(Boolean flag) = "Socket_setBlocking";
+function Socket Socket.accept!() = "Socket_accept";
+function String Socket.read!() = "Socket_read";
+function Socket.send!(String message) = "Socket_send";
+function String Socket.readFrom!(String hostFrom, UInt32 portFrom) = "Socket_readFrom";
+function Socket.sendTo!(String message, String hostTo, UInt32 portTo) = "Socket_sendTo";
+function Socket.disconnect!() = "Socket_disconnect";
+
+function String Socket.hostTo?() = "Socket_hostTo";
+function String Socket.hostFrom?() = "Socket_hostFrom";
+function UInt32 Socket.portTo?() = "Socket_portTo";
+function UInt32 Socket.portFrom?() = "Socket_portFrom";
+function Protocol Socket.protocol?() = "Socket_protocol";
+function IPVer Socket.ipVer?() = "Socket_ipVer";
+function SocketType Socket.socketType?() = "Socket_type";
+function Boolean Socket.blocking?() = "Socket_blocking";
+function UInt32 Socket.listenQueue?() = "Socket_listenQueue";
+function SInt32 Socket.socketHandler?() = "Socket_socketHandler";
+
+

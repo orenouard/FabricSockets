@@ -1,0 +1,20 @@
+/*
+ * Fabric Core 1.11.3
+ * HelloWorld EDK Sample
+ *
+ * Copyright 2010-2014 Fabric Software Inc. All rights reserved.
+ */
+
+object IPVer
+{
+    Data handle;
+};
+
+function IPVer() = "IPVer_Construct";
+function IPVer(String name) = "IPVer_ConstructFromString";
+function ~IPVer() = "IPVer_Destruct";
+
+function Integer IPVer.asCode() = "IPVer_AsCode";
+function String IPVer.asString() = "IPVer_AsString";
+function Boolean == (IPVer a, IPVer b) = "IPVer_Equal";
+function Boolean != (IPVer a, IPVer b) = "IPVer_NotEqual";

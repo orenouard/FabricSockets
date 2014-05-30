@@ -1,0 +1,20 @@
+/*
+ * Fabric Core 1.11.3
+ * HelloWorld EDK Sample
+ *
+ * Copyright 2010-2014 Fabric Software Inc. All rights reserved.
+ */
+
+object Protocol
+{
+    Data handle;
+};
+
+function Protocol() = "Protocol_Construct";
+function Protocol(String name) = "Protocol_ConstructFromString";
+function ~Protocol() = "Protocol_Destruct";
+
+function Integer Protocol.asCode() = "Protocol_AsCode";
+function String Protocol.asString() = "Protocol_AsString";
+function Boolean == (Protocol a, Protocol b) = "Protocol_Equal";
+function Boolean != (Protocol a, Protocol b) = "Protocol_NotEqual";

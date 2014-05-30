@@ -1,0 +1,4 @@
+{
+  "libs": "Sockets",
+  "code": ["IPVer.kl", "Protocol.kl", "SocketType.kl", "Socket.kl", "Sockets.kl"]
+}
