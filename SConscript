@@ -269,12 +269,11 @@ def buildExtension(env, target, sources):
       )
 
   for source in Flatten(kl2edkTargets):
-    if source.exists() :
-      if str(source)[-2:] == '.h' and not source in cppHeaders:
-        cppHeaders.append(File(source))
-      if str(source)[-4:] == '.cpp' and not source in cppSources:
-        cppSources.append(File(source))
-
+    if str(source)[-2:] == '.h' and not source in cppHeaders:
+	  cppHeaders.append(File(source))
+    if str(source)[-4:] == '.cpp' and not source in cppSources:
+	  cppSources.append(File(source))
+  	
   env.Depends(cppHeaders, kl2edkSources)
   if jsoncodegen :
     env.Depends(cppSources, kl2edkSources)
