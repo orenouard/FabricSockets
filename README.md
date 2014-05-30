@@ -7,26 +7,7 @@ Simple sockets extension for Fabric Engine, based on Netlink Sockets C++ library
 building
 A scons script is provided, it's a modification of the default Fabric Engine SConscript provided in the EDK.
 
-Currently EDK.h must be modified to build on windows, replace :
-
-#if defined(FABRIC_EDK_PLATFORM_POSIX)
-# include <string.h>
-# include <stdio.h>
-#elif defined(FABRIC_EDK_PLATFORM_WINDOWS)
-# include <intrin.h>
-# include <windows.h>
-#endif
-
-by 
-
-#if defined(FABRIC_EDK_PLATFORM_POSIX)
-# include <string.h>
-# include <stdio.h>
-#elif defined(FABRIC_EDK_PLATFORM_WINDOWS)
-# include <intrin.h>
-# include <winsock2.h>
-# include <windows.h>
-#endif
+Currently EDK.h must be modified to build on windows, add # include <winsock2.h> just before # include <windows.h> at line 89.
 
 A static build of netlink sockets (http://sourceforge.net/projects/netlinksockets/) is required
 To inform scons where to find the Fabric Engine includes as well as the thirdparty libraries, you need to set the following environment variables:
