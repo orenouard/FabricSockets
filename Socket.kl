@@ -29,6 +29,7 @@ function String Socket.readFrom!(String hostFrom, UInt32 portFrom) = "Socket_rea
 function Socket.sendTo!(String message, String hostTo, UInt32 portTo) = "Socket_sendTo";
 function Socket.disconnect!() = "Socket_disconnect";
 
+function Boolean Socket.isValid?() = "Socket_isValid";
 function String Socket.hostTo?() = "Socket_hostTo";
 function String Socket.hostFrom?() = "Socket_hostFrom";
 function UInt32 Socket.portTo?() = "Socket_portTo";

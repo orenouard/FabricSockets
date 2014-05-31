@@ -24,17 +24,35 @@ operator server(io String string) {
   report("KL: Host Ip: " + hostip);
 
   Socket server("localhost", 5000, Protocol("TCP"), IPVer("IP4"), 1);
-  Socket client = server.accept();
-  String message = "";
-  while (getLastError() == "")
+
+  report("Created socket " + server.socketType().asString() + " from " + server.hostFrom() + ":" + server.portFrom()
+        + " " + server.protocol().asString() + " " + server.ipVer().asString() + " blocking: " + server.blocking());
+
+  Socket client();
+  report("Client connected: "+client.isValid());
+  client = server.accept();
+  if (client.isValid())
   {
-  	message = client.read();
-    if (message != "")
-  	 report("KL: Socket server received message from client: " + message);
-    if (message == "exit")
-      break;
+    report("Connected " + client.socketType().asString()
+           + " from " + client.hostFrom() + ":" + client.portFrom()
+           + " to " + client.hostTo() + ":" + client.portTo()
+           + " " + client.protocol().asString() + " " + client.ipVer().asString() + " blocking: " + client.blocking());
+    String message = "";
+    while (getLastError() == "")
+    {
+    	message = client.read();
+      if (message != "")
+    	 report("KL: Socket server received message from client: " + message);
+      if (message == "exit")
+        break;
+    }
+  }
+  else
+  {
+    setError("KL: Server didn't get a client connection");
   }
 
+  server.disconnect();
   string = hostname + " : " + hostip;
   report("KL: Socket server returned: " + string);
   report("KL: Leave entry");

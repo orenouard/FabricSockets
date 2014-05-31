@@ -206,9 +206,12 @@
     "Socket_sendTo": "
   NLThis_->sendTo(NLMessage.data(), NLMessage.size()+1, NLHostTo, NLPortTo);
     ",              
-    "SocketSetBlocking": "
+    "Socket_setBlocking": "
   NLThis_->blocking(NLFlag);
-    ",    
+    ", 
+    "Socket_isValid": "
+  return this_.isValid();
+    ",       
     "Sockets_HostName": "
   char NL_result[128] = \"\";
   gethostname(NL_result, sizeof(NL_result));
